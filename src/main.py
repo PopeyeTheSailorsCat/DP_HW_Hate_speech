@@ -3,6 +3,7 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.ensemble import RandomForestClassifier
 import optuna
 from optuna.samplers import TPESampler
+from dvclive.optuna import DVCLiveCallback
 import joblib
 
 train_X, train_y = data_handler.get_embedded_data(config.TRAIN_DATASET_PATH)
@@ -36,7 +37,7 @@ def objective(trial):
 
 sampler = TPESampler(seed=1337)
 study = optuna.create_study(study_name="RandomForest", direction="maximize", sampler=sampler)
-study.optimize(objective, n_trials=75, timeout=10000)
+study.optimize(objective, n_trials=75, timeout=10000, callbacks=[DVCLiveCallback()])
 
 joblib.dump(study, "reports/study.pkl")
 study = joblib.load("reports/study.pkl")
