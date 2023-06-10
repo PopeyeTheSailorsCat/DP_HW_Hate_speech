@@ -1,0 +1,4 @@
+outs:
+- md5: bbed3d2337a561bc6d8ee9bd092fbdf8
+  size: 16940425
+  path: latest.joblib

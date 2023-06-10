@@ -5,3 +5,4 @@ dvc add data/test.csv
 dvc add data/train.csv
 dvc add data/val.csv
 dvc add reports/study.pkl
+dvc add models/latest.joblib
